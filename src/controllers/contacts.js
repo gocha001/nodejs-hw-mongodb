@@ -11,6 +11,10 @@ import createHttpError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
+import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
+import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
+import { env } from '../utils/env.js';
+import { ENABLE_CLOUDINARY } from '../constants/index.js';
 
 export const getAllContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -49,7 +53,25 @@ export const getContactByIdController = async (req, res) => {
 };
 
 export const createContactController = async (req, res) => {
-  const contact = await createContact(req.body, req.user._id);
+  const photo = req.file;
+
+  let photoUrl;
+
+  if (photo) {
+    if (env(ENABLE_CLOUDINARY) === 'true') {
+      photoUrl = await saveFileToCloudinary(photo);
+    } else {
+      photoUrl = await saveFileToUploadDir(photo);
+    }
+  }
+
+  const contact = await createContact(
+    {
+      ...req.body,
+      photo: photoUrl,
+    },
+    req.user._id,
+  );
 
   res.status(201).json({
     status: 201,
@@ -58,13 +80,34 @@ export const createContactController = async (req, res) => {
   });
 };
 
-export const patchContactController = async (req, res) => {
+export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
+
   const userId = req.user._id;
-  const result = await updateContact({ contactId, userId }, req.body);
+
+  const photo = req.file;
+
+  let photoUrl;
+
+  if (photo) {
+    if (env(ENABLE_CLOUDINARY) === 'true') {
+      photoUrl = await saveFileToCloudinary(photo);
+    } else {
+      photoUrl = await saveFileToUploadDir(photo);
+    }
+  }
+
+  const result = await updateContact(
+    { contactId, userId },
+    {
+      ...req.body,
+      photo: photoUrl,
+    },
+  );
 
   if (!result) {
-    throw new createHttpError(404, 'Contact not found');
+    next(createHttpError(404, 'Contact not found'));
+    return;
   }
 
   res.json({
