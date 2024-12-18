@@ -1,6 +1,6 @@
 # docs/openapi.yaml
 
-openapi: 3.1.0
+openapi: 3.0.3
 info:
   version: 1.0.0
   title: Contacts app
@@ -12,15 +12,22 @@ info:
 tags:
   - name: Contacts
     description: Operations about users.
-  - name: Auth
-    description: Auth operations.
+  # - name: Auth
+  #   description: Auth operations.
 servers:
-  - url: http://localhost:3000
+  - url: http://http://localhost:3000
+    description: Development server
   - url: https://nodejs-hw-mongodb-7-dpn6.onrender.com
+    description: Production server
 paths:
   /contacts/{id}:
     get:
-      $ref: ../src/swagger/path/contacts/{id}/get.yaml
+      $ref: ../src/swagger/path/contacts/id/get.yaml
+  /contacts:
+    get:
+      $ref: ../src/swagger/path/contacts/get.yaml
+    post:
+      $ref: ../src/swagger/path/contacts/post.yaml
 components:
   securitySchemes:
     bearerAuth:

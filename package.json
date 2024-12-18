@@ -9,7 +9,7 @@
     "start": "node ./src/index.js",
     "dev": "nodemon src/index.js",
     "build": "npm run build-docs",
-    "build-docs": "redocly bundle --ext json -o docs/swagger.json",
+    "build-docs": "redocly bundle --ext json -o ./docs/swagger.json",
     "preview-docs": "redocly preview-docs"
   },
   "keywords": [],
@@ -18,7 +18,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.14.0",
-    "@redocly/cli": "^1.26.0",
+    "@redocly/cli": "^1.16.0",
     "eslint": "^9.14.0",
     "globals": "^15.12.0",
     "nodemon": "^3.1.7",
