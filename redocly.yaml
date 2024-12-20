@@ -9,9 +9,6 @@ rules:
 theme:
   openapi:
     htmlTemplate: ./docs/index.html
-    # colors:
-    #   primary:
-    #     main: '#32329f'
   generateCodeSamples:
     languages:
       - lang: curl

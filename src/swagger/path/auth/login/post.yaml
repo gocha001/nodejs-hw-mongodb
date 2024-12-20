@@ -1,0 +1,54 @@
+#/swagger/paths/auth/login/post.yaml
+
+tags:
+  - Auth
+summary: User authentication
+operationId: loginUser
+description: User authentication
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            description: User's email
+            type: string
+            example: vasyl9@example.com
+          password:
+            description: User's password
+            type: string
+            example: Asdf123
+responses:
+  '200':
+    description: User authentication
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: User successfully authenticated
+            data:
+              type: object
+              $ref: ../../../components/schemas/token.yaml
+  '400':
+    $ref: '../../../components/responses/400.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../components/responses/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'
