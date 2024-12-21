@@ -15,7 +15,7 @@
       "description": "Development server"
     },
     {
-      "url": "https://nodejs-hw-mongodb-7-dpn6.onrender.com",
+      "url": "https://nodejs-hw-mongodb-8-bq8y.onrender.com",
       "description": "Production server"
     }
   ],
@@ -126,6 +126,7 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
+                "required": [],
                 "properties": {
                   "name": {
                     "description": "Contact's name",
@@ -417,9 +418,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
           "500": {
             "$ref": "#/components/responses/500"
           }
@@ -599,12 +597,6 @@
               }
             }
           },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
           "409": {
             "description": "Email in use",
             "content": {
@@ -712,9 +704,6 @@
               }
             }
           },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
           "401": {
             "$ref": "#/components/responses/401"
           },
@@ -755,12 +744,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -807,14 +790,8 @@
               }
             }
           },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -879,9 +856,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
           },
           "404": {
             "$ref": "#/components/responses/404"
@@ -955,9 +929,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"

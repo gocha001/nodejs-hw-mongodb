@@ -39,8 +39,6 @@ responses:
             data:
               type: object
               example: {}
-  '400':
-    $ref: '../../../components/responses/400.yaml'
   '404':
     $ref: '../../../components/responses/404.yaml'
   '500':
