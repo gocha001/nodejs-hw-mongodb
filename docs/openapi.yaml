@@ -17,7 +17,7 @@ tags:
 servers:
   - url: http://127.0.0.1:3000
     description: Development server
-  - url: https://nodejs-hw-mongodb-8-bq8y.onrender.com
+  - url: https://nodejs-hw-mongodb-8-bq8y.onrender.com/api-docs
     description: Production server
 paths:
   /contacts/{id}:
