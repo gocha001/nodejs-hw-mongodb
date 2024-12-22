@@ -43,10 +43,13 @@ responses:
               example: User successfully authenticated
             data:
               type: object
-              $ref: ../../../components/schemas/token.yaml
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  type: string
+                  example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
   '401':
     $ref: '../../../components/responses/401.yaml'
-  '404':
-    $ref: '../../../components/responses/404.yaml'
   '500':
     $ref: '../../../components/responses/500.yaml'
