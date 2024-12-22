@@ -412,9 +412,6 @@
               }
             }
           },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
           "401": {
             "$ref": "#/components/responses/401"
           },
@@ -697,7 +694,15 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/token"
+                      "required": [
+                        "accessToken"
+                      ],
+                      "properties": {
+                        "accessToken": {
+                          "type": "string",
+                          "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
+                        }
+                      }
                     }
                   }
                 }
@@ -706,9 +711,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -783,7 +785,15 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/token"
+                      "required": [
+                        "accessToken"
+                      ],
+                      "properties": {
+                        "accessToken": {
+                          "type": "string",
+                          "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
+                        }
+                      }
                     }
                   }
                 }
@@ -857,9 +867,6 @@
               }
             }
           },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
           "500": {
             "$ref": "#/components/responses/500"
           }
@@ -932,9 +939,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -1035,18 +1039,6 @@
             "description": "User's password",
             "type": "string",
             "example": "Asdf123"
-          }
-        }
-      },
-      "token": {
-        "type": "object",
-        "required": [
-          "accessToken"
-        ],
-        "properties": {
-          "accessToken": {
-            "type": "string",
-            "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
           }
         }
       }
