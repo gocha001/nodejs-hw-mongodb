@@ -16,16 +16,6 @@ parameters:
 responses:
   '204':
     description: Delete contact by id
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - status
-          properties:
-            status:
-              type: integer
-              example: 204
   '400':
     $ref: '../../../components/responses/400.yaml'
   '401':

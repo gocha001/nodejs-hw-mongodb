@@ -236,23 +236,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete contact by id",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 204
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Delete contact by id"
           },
           "400": {
             "$ref": "#/components/responses/400"
@@ -1119,7 +1103,7 @@
         }
       },
       "404": {
-        "description": "Route not found",
+        "description": "Contact not found",
         "content": {
           "application/json": {
             "schema": {
@@ -1136,7 +1120,7 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "Route not found"
+                  "example": "Contact not found"
                 },
                 "data": {
                   "type": "object",
@@ -1146,7 +1130,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Route not found"
+                      "example": "Contact not found"
                     }
                   }
                 }
