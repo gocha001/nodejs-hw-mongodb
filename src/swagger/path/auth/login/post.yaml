@@ -34,6 +34,7 @@ responses:
             - status
             - message
             - data
+            - token
           properties:
             status:
               type: integer
@@ -43,12 +44,11 @@ responses:
               example: User successfully authenticated
             data:
               type: object
-              required:
-                - accessToken
-              properties:
-                accessToken:
-                  type: string
-                  example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
+              $ref: '../../../components/schemas/user.yaml'
+            token:
+              description: Access token
+              type: string
+              example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
   '401':
     $ref: '../../../components/responses/401.yaml'
   '500':

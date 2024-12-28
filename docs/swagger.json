@@ -671,7 +671,8 @@
                   "required": [
                     "status",
                     "message",
-                    "data"
+                    "data",
+                    "token"
                   ],
                   "properties": {
                     "status": {
@@ -684,15 +685,12 @@
                     },
                     "data": {
                       "type": "object",
-                      "required": [
-                        "accessToken"
-                      ],
-                      "properties": {
-                        "accessToken": {
-                          "type": "string",
-                          "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
-                        }
-                      }
+                      "$ref": "#/components/schemas/user"
+                    },
+                    "token": {
+                      "description": "Access token",
+                      "type": "string",
+                      "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
                     }
                   }
                 }
