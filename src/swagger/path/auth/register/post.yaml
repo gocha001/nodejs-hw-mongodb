@@ -39,16 +39,21 @@ responses:
             - status
             - message
             - data
+            - token
           properties:
             status:
               type: integer
               example: 201
             message:
               type: string
-              example: User successfully registered
+              example: User successfully registered and logged
             data:
               type: object
               $ref: '../../../components/schemas/user.yaml'
+            token:
+              description: Access token
+              type: string
+              example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
   '409' :
     description: Email in use
     content:

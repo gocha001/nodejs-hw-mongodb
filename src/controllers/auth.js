@@ -7,16 +7,22 @@ import {
   refreshUsersSession,
   sendResetToken,
   resetPassword,
+  loginAfterRegisterUser,
 } from '../services/auth.js';
 import { THIRTY_DAYS } from '../constants/index.js';
 
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
 
+  const session = await loginAfterRegisterUser(req.body);
+
+  setupSession(res, session);
+
   res.status(201).json({
     status: 201,
-    message: 'Successfully registered a user!',
+    message: 'Successfully registered and logged a user!',
     data: user,
+    accessToken: session.accessToken,
   });
 };
 

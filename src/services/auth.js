@@ -32,6 +32,17 @@ export const registerUser = async (payload) => {
   });
 };
 
+export const loginAfterRegisterUser = async (payload) => {
+  const user = await UsersCollection.findOne({ email: payload.email });
+
+  const newSession = createSession();
+
+  return await SessionsCollection.create({
+    userId: user._id,
+    ...newSession,
+  });
+};
+
 export const loginUser = async (payload) => {
   const user = await UsersCollection.findOne({ email: payload.email });
 
