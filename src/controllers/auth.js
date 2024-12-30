@@ -28,7 +28,8 @@ export const registerUserController = async (req, res) => {
 
 export const loginUserController = async (req, res) => {
   const { user, session } = await loginUser(req.body);
-
+  console.log(`us${user}`);
+  console.log(`ses${session}`);
   setupSession(res, session);
 
   res.json({
@@ -40,8 +41,10 @@ export const loginUserController = async (req, res) => {
 };
 
 export const logoutUserController = async (req, res) => {
-  if (req.cookies.sessionId) {
-    await logoutUser(req.cookies.sessionId);
+  const { sessionId } = req.cookies;
+  console.log(req.body);
+  if (typeof sessionId === 'string') {
+    await logoutUser(sessionId);
   }
 
   res.clearCookie('sessionId');

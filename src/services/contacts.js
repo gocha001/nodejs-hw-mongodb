@@ -1,7 +1,7 @@
 //src/services/contacts.js
 
 import { ContactsCollection } from '../db/models/contact.js';
-// import { calculatePaginationData } from '../utils/calculatePaginationData.js';
+import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 import { SORT_ORDER } from '../constants/index.js';
 
 export const getAllContacts = async (
@@ -27,9 +27,7 @@ export const getAllContacts = async (
     contactsQuery.where('contactType').equals(filter.contactType);
   }
 
-  const [
-    // contactsCount,
-    contacts] = await Promise.all([
+  const [ contactsCount, contacts] = await Promise.all([
     ContactsCollection.find().merge(contactsQuery).countDocuments(),
     contactsQuery
       .skip(skip)
@@ -38,11 +36,11 @@ export const getAllContacts = async (
       .exec(),
   ]);
 
-  // const paginationData = calculatePaginationData(contactsCount, perPage, page);
+  const paginationData = calculatePaginationData(contactsCount, perPage, page);
 
   return {
     data: contacts,
-    // ...paginationData,
+    ...paginationData,
   };
 };
 
