@@ -42,7 +42,7 @@ export const loginUserController = async (req, res) => {
 
 export const logoutUserController = async (req, res) => {
   const { sessionId } = req.cookies;
-  console.log(req.body);
+  console.log(`coocies:`, req.cookies);
   if (typeof sessionId === 'string') {
     await logoutUser(sessionId);
   }
@@ -56,11 +56,15 @@ export const logoutUserController = async (req, res) => {
 const setupSession = (res, session) => {
   res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
+    secure: true,
+    sameSite: 'None',
     expires: new Date(Date.now() + THIRTY_DAYS),
   });
 
   res.cookie('sessionId', session._id, {
     httpOnly: true,
+    secure: true,
+    sameSite: 'None',
     expires: new Date(Date.now() + THIRTY_DAYS),
   });
 };
