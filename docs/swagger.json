@@ -745,14 +745,14 @@
                   "type": "object",
                   "required": [
                     "status",
-                    "data"
+                    "sessionId"
                   ],
                   "properties": {
                     "status": {
                       "type": "integer",
                       "example": 200
                     },
-                    "data": {
+                    "sessionId": {
                       "type": "string",
                       "example": "67759f978a9dd12bd50cb994"
                     }
