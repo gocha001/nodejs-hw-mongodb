@@ -19,6 +19,7 @@ export const setupServer = () => {
   app.use(
     cors({
       origin: 'https://pet-react-seven.vercel.app',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     }),
   );
