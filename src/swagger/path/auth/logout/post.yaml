@@ -7,7 +7,7 @@ operationId: logoutUser
 description: User logout
 security: []
 responses:
-  '204':
+  '200':
     description: User logout
     content:
       application/json:
@@ -18,7 +18,7 @@ responses:
           properties:
             status:
               type: integer
-              example: 204
+              example: 200
   '500':
     $ref: '../../../components/responses/500.yaml'
 
