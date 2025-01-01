@@ -744,12 +744,17 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "status"
+                    "status",
+                    "data"
                   ],
                   "properties": {
                     "status": {
                       "type": "integer",
                       "example": 200
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "67759f978a9dd12bd50cb994"
                     }
                   }
                 }
