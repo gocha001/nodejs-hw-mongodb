@@ -28,8 +28,6 @@ export const registerUserController = async (req, res) => {
 
 export const loginUserController = async (req, res) => {
   const { user, session } = await loginUser(req.body);
-  console.log(`us${user}`);
-  console.log(`ses${session}`);
   setupSession(res, session);
 
   res.json({
@@ -42,7 +40,6 @@ export const loginUserController = async (req, res) => {
 
 export const logoutUserController = async (req, res) => {
   const { sessionId } = req.cookies;
-  console.log(`coocies:`, req.cookies);
   if (typeof sessionId === 'string') {
     await logoutUser(sessionId);
   }
@@ -73,10 +70,8 @@ const setupSession = (res, session) => {
 };
 
 export const refreshUserSessionController = async (req, res) => {
-  const session = await refreshUsersSession({
-    sessionId: req.cookies.sessionId,
-    refreshToken: req.cookies.refreshToken,
-  });
+  const { sessionId, refreshToken } = req.cookies;
+  const session = await refreshUsersSession(sessionId, refreshToken);
 
   setupSession(res, session);
 
