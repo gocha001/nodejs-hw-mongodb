@@ -86,11 +86,8 @@ const createSession = () => {
   };
 };
 
-export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
-  const session = await SessionsCollection.findOne({
-    _id: sessionId,
-    refreshToken,
-  });
+export const refreshUsersSession = async (sessionId) => {
+  const session = await SessionsCollection.findOne({ _id: sessionId });
 
   if (!session) {
     throw createHttpError(401, 'Session not found');
@@ -105,7 +102,7 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
 
   const newSession = createSession();
 
-  await SessionsCollection.deleteOne({ _id: sessionId, refreshToken });
+  await SessionsCollection.deleteOne({ _id: sessionId });
 
   return await SessionsCollection.create({
     userId: session.userId,
