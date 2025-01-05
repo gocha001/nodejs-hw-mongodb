@@ -15,14 +15,10 @@ responses:
           type: object
           required:
             - status
-            - sessionId
           properties:
             status:
               type: integer
               example: 200
-            sessionId:
-              type: string
-              example: 67759f978a9dd12bd50cb994
   '500':
     $ref: '../../../components/responses/500.yaml'
 

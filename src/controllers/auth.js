@@ -39,9 +39,9 @@ export const loginUserController = async (req, res) => {
 };
 
 export const logoutUserController = async (req, res) => {
-  console.log(`hello logout`);
+
   const { sessionId } = req.cookies;
-  console.log(`sessionId logout ${sessionId}`);
+
   if (typeof sessionId === 'string') {
     await logoutUser(sessionId);
   }
@@ -51,7 +51,6 @@ export const logoutUserController = async (req, res) => {
 
   res.status(200).json({
     status: 200,
-    // sessionId: sessionId,
   });
 };
 
@@ -72,9 +71,9 @@ const setupSession = (res, session) => {
 };
 
 export const refreshUserSessionController = async (req, res) => {
-  console.log(`hello refresh`);
+
   const { sessionId } = req.cookies;
-  console.log(`sessionId ${sessionId}`);
+
   const session = await refreshUsersSession(sessionId);
 
   setupSession(res, session);
@@ -88,7 +87,7 @@ export const refreshUserSessionController = async (req, res) => {
 
 export const sendResetEmailController = async (req, res) => {
   await sendResetToken(req.body.email);
-  console.log(res.statusCode);
+  
   res.json({
     message: 'Reset password email has been successfully sent.',
     status: 200,

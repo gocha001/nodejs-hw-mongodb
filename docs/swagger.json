@@ -744,17 +744,12 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "status",
-                    "sessionId"
+                    "status"
                   ],
                   "properties": {
                     "status": {
                       "type": "integer",
                       "example": 200
-                    },
-                    "sessionId": {
-                      "type": "string",
-                      "example": "67759f978a9dd12bd50cb994"
                     }
                   }
                 }
@@ -786,7 +781,7 @@
                   "required": [
                     "status",
                     "message",
-                    "data"
+                    "accessToken"
                   ],
                   "properties": {
                     "status": {
@@ -797,17 +792,9 @@
                       "type": "string",
                       "example": "Token updated"
                     },
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "accessToken"
-                      ],
-                      "properties": {
-                        "accessToken": {
-                          "type": "string",
-                          "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
-                        }
-                      }
+                    "accessToken": {
+                      "type": "string",
+                      "example": "NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh"
                     }
                   }
                 }
@@ -880,6 +867,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "500": {
             "$ref": "#/components/responses/500"

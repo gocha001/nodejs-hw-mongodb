@@ -39,5 +39,7 @@ responses:
             data:
               type: object
               example: {}
+  '400':
+    $ref: '../../../components/responses/400.yaml'
   '500':
     $ref: '../../../components/responses/500.yaml'
